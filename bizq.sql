@@ -20,12 +20,13 @@ group by acquirer_category_code
 order by totalprice DESC
 limit 10;
 
---4. What investment categories received the most funding in the most funded year? 
+--4.What investment categories received the most funding in the most funded year? 
 Select investor_category_code, sum(raised_amount_usd)
 From datasets.crunchbase_investments
-Where funded_year = 2013
+Where funded_year = 2013 and raised_amount_usd is not NULL
 Group by investor_category_code
-Order by sum desc;
+Order by sum desc
+limit 10;
 
 --5. What kind of funding round types did these investment categories have in 2013?
 Select  investor_category_code,funding_round_type, count(funding_round_type)
