@@ -65,8 +65,8 @@ ORDER BY sum desc;
 SELECT name, region, city, funding_total_usd
 From datasets.crunchbase_companies
 Where  category_code = 'finance'
-Order by funding_total_usd DESC;
-LIMIT 10
+Order by funding_total_usd DESC
+LIMIT 10;
 
 --10. How old are the most funded Finance Companies?
 SELECT name, founded_year, funding_total_usd
@@ -74,6 +74,6 @@ From datasets.crunchbase_companies
 Where  category_code = 'finance' AND
     funding_total_usd IS NOT NULL
     and founded_year is not NULL
---GROUP by name, founded_year, funding_total_usd
+GROUP by name, founded_year, funding_total_usd
 ORDER by funding_total_usd DESC
-LIMIT 10
+LIMIT 10;
