@@ -17,7 +17,8 @@ SELECT acquirer_category_code, sum(price_amount) as totalprice
 from datasets.crunchbase_acquisitions
 where acquired_year = 2013 and price_amount is not null
 group by acquirer_category_code
-order by totalprice DESC;
+order by totalprice DESC
+limit 10;
 
 --4. What investment categories received the most funding in the most funded year? 
 Select investor_category_code, sum(raised_amount_usd)
