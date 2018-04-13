@@ -40,11 +40,12 @@ order by investor_category_code;
 --6. How much did these funding rounds for these categories raise in total in 2013? 
 Select  investor_category_code,funding_round_type, count(funding_round_type), sum(raised_amount_usd)
 From datasets.crunchbase_investments
-where investor_category_code 
-    in ('other','finance','enterprise','biotech') 
+where investor_category_code in ('other','finance','enterprise','biotech') 
     and funded_year = 2013
+    and raised_amount_usd is not NULL
 Group by funding_round_type, investor_category_code
-Order by sum desc;
+Order by sum desc
+limit 10;
 
 --7. What are the names of the most funded Finance Companies? 
 SELECT category_code, name, funding_rounds, funding_total_usd
